@@ -3,8 +3,9 @@
         background-color: skyblue
     }
     button{
-        background-color:blue
+        color:blue
     }
+
     #minuteStr {
         color: #ff0000;
         font-size: 20px;
