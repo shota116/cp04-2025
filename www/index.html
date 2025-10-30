@@ -39,6 +39,14 @@
             btnCClick(e);
         });
         init();
+
+        $('#btnD').click(function(e) {
+            btnDClick(e);
+        });
+
+        $('#btnE').click(function(e) {
+            btnEClick(e);
+        });
     });
     
     function rgbToColor(r,g,b){
@@ -110,7 +118,7 @@
             ctx.arc(px, py, 2, 0, Math.PI*2, false);
             ctx.fill();
         }
-        
+        /*
         for(var i = 0; i < 12; i++) {
             var px = getX(cx,i/12,0.9);
             var py = getY(cy,i/12,0.9);
@@ -119,6 +127,19 @@
             ctx.arc(px, py, 5, 0, Math.PI*2, false);
             ctx.fill();
         }
+        */
+        for (var i = 0; i < 12; i++) {
+            var angle = i / 12;
+            var px = getX(cx, i/12, 0.85);
+            var py = getY(cy, i/12, 0.85);
+            ctx.fillStyle = 'blue';
+            ctx.font = "20px sans-serif";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            var num = i === 0 ? 12 : i; 
+            ctx.fillText(num, px, py);
+            }
+
 
         if ((!hide) || hour > 0) {
             var px = getX(cx,dh,0.4);
@@ -158,6 +179,8 @@
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
+        $('#btnD').prop('disabled', false);
+        $('#btnE').prop('disabled', false);
         
     }
 
@@ -191,16 +214,11 @@
     function btnAClick(e){
         active = true;
         startTime = new Date(); 
-        
-        
     }
 
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
         active = false;
-
-        
-        
     }
 
     // ButtonCがクリックされた時の処理
@@ -210,10 +228,30 @@
         period = 60* parseInt( $("#minute").val() ) + parseInt( $("#second").val() );
         $("#time").html("経過時間： 0");
         $("#remain").html("残り時間： " + period);
+    }
 
+    //ボタンD
+    function btnDClick(e){
+         $("#minute").val(3);
+         $("second").val(0);
+         active = false;
+         period = 60 * parseInt($("#minute").val()) + parseInt($("#second").val());
+         $("#time").html("経過時間： 0");
+         $("#remain").html("残り時間： " + period);
         
     }
-    
+
+    //ボタンE
+    function btnEClick(e){
+         $("#minute").val(7);
+         $("second").val(0);
+         active = false;
+         period = 60 * parseInt($("#minute").val()) + parseInt($("#second").val());
+         $("#time").html("経過時間： 0");
+         $("#remain").html("残り時間： " + period);
+        
+    }
+
  
     // 繰り返し実行する処理
     function timer(){  
@@ -247,7 +285,9 @@
     <button id="btnA">Start</button>  
     <button id="btnB">Stop</button>  
     <button id="btnC">Set</button>  
+    <button id="btnD">カップ麺(3分)</button> 
+    <button id="btnE">パスタ麺(7分)</button> 
     <input type="number" id="minute" value=0 >
-    <input type="number" id="second" value=15 >
+    <input type="number" id="second" value=0 >
 </body>
 </html>
