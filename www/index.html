@@ -135,7 +135,7 @@
             ctx.fillStyle = 'blue';
             ctx.font = "20px sans-serif";
             ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
+            ctx.textBaseline = "middle";//文字を真ん中にやる
             var num = i === 0 ? 12 : i; 
             ctx.fillText(num, px, py);
             }
@@ -149,7 +149,7 @@
         if ((!hide) || hour > 0|| minute > 0) {
             var px = getX(cx,dm,0.6);
             var py = getY(cy,dm,0.6);
-            line(ctx,cx,cy,px,py,15, 'rgb(128, 255, 162)')
+            line(ctx,cx,cy,px,py,10, 'skyblue')
         }
         var px = getX(cx,ds,0.9);
         var py = getY(cy,ds,0.9);
